@@ -502,22 +502,106 @@ footer{background:var(--dark);color:#fff;padding:40px 16px 20px;margin-top:20px}
   <button class="admin-btn e-btn" title="Editar Página" onclick="adminAuth('e')">E</button>
 </div>
 
-<!-- ADMIN PANEL R - PRODUCTOS -->
-<div class="admin-overlay" id="admin-r">
-  <div class="admin-panel">
-    <h2>✏️ Editor de Productos</h2>
-    <div class="visitors-badge">
-      <span class="visitors-dot"></span>
-      <span id="visitors-count">0</span> personas viendo la página ahora
-    </div>
-    <button class="btn-add-prod" onclick="addNewProduct()">+ Agregar Nuevo Producto</button>
-    <div class="admin-product-list" id="admin-product-list"></div>
-    <div style="display:flex;gap:10px;margin-top:20px">
-      <button class="btn-save-admin" onclick="saveProducts()">💾 Guardar Cambios</button>
-      <button onclick="closeAdmin('admin-r')" style="background:#eee;border:none;padding:10px 20px;border-radius:10px;cursor:pointer;font-weight:700">Cerrar</button>
-    </div>
-  </div>
-</div>
+<script>
+let products = JSON.parse(localStorage.getItem('trogui_products')) || [];
+
+function renderAdminProducts() {
+
+  const list = document.getElementById('admin-product-list');
+
+  list.innerHTML = '';
+
+  products.forEach((p, i) => {
+
+    list.innerHTML += `
+      <div class="admin-card">
+
+        <input 
+          type="text"
+          value="${p.name || ''}"
+          placeholder="Nombre producto"
+          onchange="products[${i}].name=this.value"
+        >
+
+        <textarea
+          placeholder="Descripción"
+          onchange="products[${i}].description=this.value"
+        >${p.description || ''}</textarea>
+
+        <input 
+          type="number"
+          value="${p.price || 0}"
+          placeholder="Precio"
+          onchange="products[${i}].price=parseInt(this.value)"
+        >
+
+        <input 
+          type="number"
+          value="${p.oldPrice || 0}"
+          placeholder="Precio anterior"
+          onchange="products[${i}].oldPrice=parseInt(this.value)"
+        >
+
+        <input 
+          type="text"
+          value="${p.image || ''}"
+          placeholder="URL Imagen"
+          onchange="products[${i}].image=this.value"
+        >
+
+        <input 
+          type="text"
+          value="${p.video || ''}"
+          placeholder="URL Video"
+          onchange="products[${i}].video=this.value"
+        >
+
+        <button onclick="removeProduct(${i})">
+          🗑 Eliminar
+        </button>
+
+      </div>
+    `;
+  });
+
+}
+
+function saveProducts() {
+
+  localStorage.setItem(
+    'trogui_products',
+    JSON.stringify(products)
+  );
+
+  renderProducts();
+
+  alert('✅ Productos guardados correctamente');
+}
+
+function removeProduct(i) {
+
+  products.splice(i,1);
+
+  renderAdminProducts();
+
+}
+
+function addNewProduct() {
+
+  products.push({
+    id: 'TR' + Date.now(),
+    name: 'Nuevo Producto',
+    description: '',
+    price: 0,
+    oldPrice: 0,
+    image: '',
+    video: ''
+  });
+
+  renderAdminProducts();
+}
+</script>
+
 
 <!-- ADMIN PANEL C - PEDIDOS -->
 <div class="admin-overlay" id="admin-c">
