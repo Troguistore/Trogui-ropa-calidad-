@@ -7,89 +7,173 @@
 
 <style>
 
-body{
-    font-family: 'Comic Sans MS', cursive;
-    background:#f4f4f4;
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Trebuchet MS', sans-serif;
+    background:#f5f5f5;
     padding:40px;
 }
 
-.container{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-.central{
-    background:#f7a8b8;
-    padding:25px 50px;
+h1{
+    text-align:center;
+    margin-bottom:60px;
+    background:#ffb6c1;
+    width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:20px;
     border-radius:25px;
+    box-shadow:10px 10px 0 #d81b60;
     font-size:40px;
-    font-weight:bold;
-    box-shadow:10px 10px 0 #c2185b;
-    margin:40px;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:40px;
-    width:100%;
-    max-width:1400px;
+.map{
+    position:relative;
+    width:1400px;
+    margin:auto;
+    height:1400px;
 }
 
-.card{
-    padding:25px;
+/* TARJETAS */
+
+.box{
+    position:absolute;
+    width:300px;
+    padding:20px;
     border-radius:25px;
-    color:#222;
-    box-shadow:10px 10px 0 rgba(0,0,0,0.2);
+    box-shadow:8px 8px 0 rgba(0,0,0,0.2);
     transition:0.3s;
 }
 
-.card:hover{
+.box:hover{
     transform:scale(1.03);
 }
 
-.card h2{
+.box h2{
     text-align:center;
-    margin-bottom:15px;
+    margin-bottom:12px;
+    font-size:24px;
 }
 
-.card p{
-    line-height:1.6;
+.box p{
     font-size:15px;
+    line-height:1.5;
 }
 
-.purple{
-    background:#c9a5ff;
+/* COLORES */
+
+.purple{ background:#d2b4ff; }
+.yellow{ background:#fff4a3; }
+.pink{ background:#ffd1dc; }
+.blue{ background:#b8e7ff; }
+.orange{ background:#ffd0a6; }
+.green{ background:#d9f8b4; }
+.red{ background:#ffb3b3; }
+.gray{ background:#e3e3e3; }
+
+/* POSICIONES */
+
+.central{
+    top:560px;
+    left:480px;
+    width:400px;
+    text-align:center;
+    background:#ffb6c1;
+    font-size:24px;
+    font-weight:bold;
+    z-index:2;
 }
 
-.yellow{
-    background:#f6e58d;
+.b1{ top:40px; left:60px; }
+.b2{ top:40px; left:550px; }
+.b3{ top:40px; right:60px; }
+
+.b4{ top:360px; left:40px; }
+.b5{ top:360px; right:40px; }
+
+.b6{ top:920px; left:40px; }
+.b7{ top:920px; left:380px; }
+.b8{ top:920px; right:380px; }
+.b9{ top:920px; right:40px; }
+
+/* FLECHAS */
+
+.arrow{
+    position:absolute;
+    background:black;
 }
 
-.pink{
-    background:#ffc1b6;
+.vertical{
+    width:6px;
 }
 
-.blue{
-    background:#9ad9ff;
+.horizontal{
+    height:6px;
 }
 
-.orange{
-    background:#ffbf91;
+/* FLECHAS SUPERIORES */
+
+.a1{
+    height:180px;
+    top:280px;
+    left:210px;
 }
 
-.green{
-    background:#d8f5a2;
+.a2{
+    height:180px;
+    top:280px;
+    left:700px;
 }
 
-.red{
-    background:#ff9f9f;
+.a3{
+    height:180px;
+    top:280px;
+    right:210px;
 }
 
-.gray{
-    background:#dfe6e9;
+/* FLECHAS LATERALES */
+
+.a4{
+    width:220px;
+    top:650px;
+    left:250px;
+}
+
+.a5{
+    width:220px;
+    top:650px;
+    right:250px;
+}
+
+/* FLECHAS INFERIORES */
+
+.a6{
+    height:180px;
+    top:760px;
+    left:210px;
+}
+
+.a7{
+    height:180px;
+    top:760px;
+    left:530px;
+}
+
+.a8{
+    height:180px;
+    top:760px;
+    right:530px;
+}
+
+.a9{
+    height:180px;
+    top:760px;
+    right:210px;
 }
 
 </style>
@@ -97,177 +181,121 @@ body{
 
 <body>
 
-<div class="container">
+<h1>MAPA CONCEPTUAL<br>Falacias y Paralogismos</h1>
 
-<div class="central">
-MAPA CONCEPTUAL
-<br>
+<div class="map">
+
+<!-- FLECHAS -->
+<div class="arrow vertical a1"></div>
+<div class="arrow vertical a2"></div>
+<div class="arrow vertical a3"></div>
+
+<div class="arrow horizontal a4"></div>
+<div class="arrow horizontal a5"></div>
+
+<div class="arrow vertical a6"></div>
+<div class="arrow vertical a7"></div>
+<div class="arrow vertical a8"></div>
+<div class="arrow vertical a9"></div>
+
+<!-- CENTRO -->
+
+<div class="box central">
+RAZONAMIENTO INCORRECTO<br>
 Falacias y Paralogismos
 </div>
 
-<div class="grid">
+<!-- ARRIBA -->
 
-<div class="card purple">
+<div class="box purple b1">
 <h2>¿Qué son?</h2>
 <p>
-Son errores en el razonamiento donde la conclusión no se deriva correctamente de las premisas. 
-Muchas veces se usan en debates jurídicos, discusiones políticas o incluso conversaciones cotidianas.
+Errores en el razonamiento donde la conclusión no se deriva correctamente de las premisas.
 </p>
 </div>
 
-<div class="card yellow">
+<div class="box yellow b2">
 <h2>Razonamiento Natural</h2>
 <p>
-Es el razonamiento cotidiano que usamos normalmente sin aplicar reglas estrictas de lógica.
-Ejemplo: “Ese abogado habla bonito, entonces debe tener la razón”.
-</p>
-</div>
-
-<div class="card pink">
-<h2>Razonamiento Lógico</h2>
-<p>
-Busca coherencia, orden y validez. 
-Muy importante en Derecho porque jueces y abogados deben justificar correctamente sus decisiones.
-</p>
-</div>
-
-<div class="card blue">
-<h2>Homonimia</h2>
-<p>
-Ocurre cuando una palabra tiene varios significados.
+Es cotidiano y espontáneo.
 <br><br>
 Ejemplo:
-“Derecho” puede significar:
-<br>
-• Ley
-<br>
-• Facultad o permiso
+“Ese abogado habla duro, entonces tiene razón”.
 </p>
 </div>
 
-<div class="card orange">
+<div class="box pink b3">
+<h2>Razonamiento Lógico</h2>
+<p>
+Busca coherencia y rigor.
+Muy importante en el Derecho y las sentencias judiciales.
+</p>
+</div>
+
+<!-- MEDIO -->
+
+<div class="box blue b4">
+<h2>Homonimia</h2>
+<p>
+Una palabra tiene varios significados.
+<br><br>
+“Derecho” puede significar:
+<br>
+• ley
+<br>
+• facultad
+</p>
+</div>
+
+<div class="box orange b5">
 <h2>Falsa Causa</h2>
 <p>
 Se atribuye una causa equivocada.
 <br><br>
-Ejemplo colombiano:
-“Me puse la camiseta de Colombia y por eso ganó la selección”.
+“Ganó Colombia porque me puse la camiseta”.
 </p>
 </div>
 
-<div class="card green">
+<!-- ABAJO -->
+
+<div class="box green b6">
 <h2>Afirmar el Consecuente</h2>
 <p>
-Ejemplo:
-<br><br>
 Si llueve → la calle se moja.
 <br>
 La calle está mojada.
 <br>
 Entonces llovió.
 <br><br>
-❌ Puede haberse mojado por otra razón.
+❌ Puede existir otra causa.
 </p>
 </div>
 
-<div class="card red">
-<h2>Negar el Antecedente</h2>
-<p>
-Ejemplo:
-<br><br>
-Si estudio → apruebo.
-<br>
-No estudié.
-<br>
-Entonces no aprobaré.
-<br><br>
-❌ Puede aprobar igualmente.
-</p>
-</div>
-
-<div class="card gray">
+<div class="box red b7">
 <h2>Petición de Principio</h2>
 <p>
-Consiste en intentar demostrar algo usando la misma idea.
+Se intenta probar algo usando la misma idea.
 <br><br>
-Ejemplo:
 “El acusado es culpable porque cometió el delito”.
 </p>
 </div>
 
-<div class="card purple">
-<h2>Argumento por Ignorancia</h2>
-<p>
-Se cree que algo es verdadero porque nadie ha demostrado lo contrario.
-<br><br>
-Ejemplo:
-“Los fantasmas existen porque nadie ha probado que no existen”.
-</p>
-</div>
-
-<div class="card yellow">
+<div class="box gray b8">
 <h2>Falsa Generalización</h2>
 <p>
-Se toman pocos casos y se aplican a todos.
+Tomar pocos casos y aplicarlos a todos.
 <br><br>
-Ejemplo:
-“Dos políticos fueron corruptos, entonces todos los políticos son corruptos”.
+“Dos políticos robaron, entonces todos son corruptos”.
 </p>
 </div>
 
-<div class="card pink">
-<h2>Falsa Oposición</h2>
+<div class="box purple b9">
+<h2>Argumento por Ignorancia</h2>
 <p>
-Consiste en atribuirle al otro una idea que nunca dijo para después refutarla fácilmente.
-</p>
-</div>
-
-<div class="card blue">
-<h2>Falacia de Accidente</h2>
-<p>
-Se confunde lo secundario con lo importante.
+Algo es verdadero porque nadie ha probado lo contrario.
 <br><br>
-Ejemplo:
-Comprar un libro solo porque tiene buena portada.
+“Los fantasmas existen porque nadie ha demostrado que no”.
 </p>
-</div>
-
-<div class="card orange">
-<h2>Inferencia Imaginaria</h2>
-<p>
-La conclusión aparece sin argumentos reales.
-<br><br>
-Muy común en escritos jurídicos mal motivados.
-</p>
-</div>
-
-<div class="card green">
-<h2>Non Sequitur</h2>
-<p>
-La conclusión no tiene relación lógica.
-<br><br>
-Ejemplo:
-“Juan estudia Derecho, entonces Juan es millonario”.
-</p>
-</div>
-
-<div class="card red">
-<h2>Idea Central</h2>
-<p>
-En Derecho no basta con hablar bonito o citar leyes.
-<br><br>
-Se necesita:
-<br>
-✔ lógica
-<br>
-✔ coherencia
-<br>
-✔ pruebas
-<br>
-✔ buena argumentación
-</p>
-</div>
-
 </div>
 
 </div>
