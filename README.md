@@ -16,164 +16,122 @@
 body{
     font-family:'Trebuchet MS', sans-serif;
     background:#f5f5f5;
-    padding:40px;
+    padding:20px;
 }
 
-h1{
-    text-align:center;
-    margin-bottom:60px;
-    background:#ffb6c1;
-    width:500px;
-    margin-left:auto;
-    margin-right:auto;
-    padding:20px;
+.page{
+    width:1100px;
+    margin:auto;
+    background:white;
+    padding:30px;
     border-radius:25px;
-    box-shadow:10px 10px 0 #d81b60;
-    font-size:40px;
+    box-shadow:0 0 20px rgba(0,0,0,0.15);
+    position:relative;
+    overflow:hidden;
 }
+
+/* TITULO CENTRAL */
+
+.center-title{
+    width:420px;
+    margin:30px auto 60px auto;
+    background:#ffb3c1;
+    color:#222;
+    text-align:center;
+    padding:25px;
+    border-radius:25px;
+    font-size:32px;
+    font-weight:bold;
+    box-shadow:10px 10px 0 #d81b60;
+    position:relative;
+    z-index:10;
+}
+
+/* CONTENEDOR */
 
 .map{
     position:relative;
-    width:1400px;
-    margin:auto;
-    height:1400px;
+    width:100%;
+    height:1200px;
 }
 
 /* TARJETAS */
 
-.box{
-    position:absolute;
-    width:300px;
-    padding:20px;
+.card{
+    width:280px;
+    padding:18px;
     border-radius:25px;
-    box-shadow:8px 8px 0 rgba(0,0,0,0.2);
+    position:absolute;
+    box-shadow:8px 8px 0 rgba(0,0,0,0.18);
     transition:0.3s;
 }
 
-.box:hover{
+.card:hover{
     transform:scale(1.03);
 }
 
-.box h2{
+.card h2{
     text-align:center;
-    margin-bottom:12px;
-    font-size:24px;
+    margin-bottom:10px;
+    font-size:21px;
+    color:#222;
 }
 
-.box p{
-    font-size:15px;
+.card p{
+    font-size:14px;
     line-height:1.5;
+    color:#333;
 }
 
 /* COLORES */
 
-.purple{ background:#d2b4ff; }
-.yellow{ background:#fff4a3; }
-.pink{ background:#ffd1dc; }
-.blue{ background:#b8e7ff; }
-.orange{ background:#ffd0a6; }
-.green{ background:#d9f8b4; }
-.red{ background:#ffb3b3; }
-.gray{ background:#e3e3e3; }
+.purple{background:#d7b8ff;}
+.yellow{background:#fff0a6;}
+.pink{background:#ffc9c9;}
+.blue{background:#b8e3ff;}
+.orange{background:#ffd0a8;}
+.green{background:#d8f7b2;}
+.red{background:#ffb2b2;}
+.gray{background:#e4e4e4;}
 
 /* POSICIONES */
 
-.central{
-    top:560px;
-    left:480px;
-    width:400px;
-    text-align:center;
-    background:#ffb6c1;
-    font-size:24px;
-    font-weight:bold;
-    z-index:2;
-}
+.c1{top:0; left:30px;}
+.c2{top:0; left:400px;}
+.c3{top:0; right:30px;}
 
-.b1{ top:40px; left:60px; }
-.b2{ top:40px; left:550px; }
-.b3{ top:40px; right:60px; }
+.c4{top:350px; left:20px;}
+.c5{top:350px; left:410px;}
+.c6{top:350px; right:20px;}
 
-.b4{ top:360px; left:40px; }
-.b5{ top:360px; right:40px; }
+.c7{top:720px; left:20px;}
+.c8{top:720px; left:410px;}
+.c9{top:720px; right:20px;}
 
-.b6{ top:920px; left:40px; }
-.b7{ top:920px; left:380px; }
-.b8{ top:920px; right:380px; }
-.b9{ top:920px; right:40px; }
+/* FLECHAS SVG */
 
-/* FLECHAS */
-
-.arrow{
+svg{
     position:absolute;
-    background:black;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
 }
 
-.vertical{
-    width:6px;
+.line{
+    stroke:#222;
+    stroke-width:4;
+    fill:none;
+    marker-end:url(#arrow);
 }
 
-.horizontal{
-    height:6px;
-}
-
-/* FLECHAS SUPERIORES */
-
-.a1{
-    height:180px;
-    top:280px;
-    left:210px;
-}
-
-.a2{
-    height:180px;
-    top:280px;
-    left:700px;
-}
-
-.a3{
-    height:180px;
-    top:280px;
-    right:210px;
-}
-
-/* FLECHAS LATERALES */
-
-.a4{
-    width:220px;
-    top:650px;
-    left:250px;
-}
-
-.a5{
-    width:220px;
-    top:650px;
-    right:250px;
-}
-
-/* FLECHAS INFERIORES */
-
-.a6{
-    height:180px;
-    top:760px;
-    left:210px;
-}
-
-.a7{
-    height:180px;
-    top:760px;
-    left:530px;
-}
-
-.a8{
-    height:180px;
-    top:760px;
-    right:530px;
-}
-
-.a9{
-    height:180px;
-    top:760px;
-    right:210px;
+.footer{
+    text-align:center;
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+    color:#444;
 }
 
 </style>
@@ -181,84 +139,72 @@ h1{
 
 <body>
 
-<h1>MAPA CONCEPTUAL<br>Falacias y Paralogismos</h1>
+<div class="page">
+
+<div class="center-title">
+MAPA CONCEPTUAL<br>
+Falacias y Paralogismos
+</div>
 
 <div class="map">
 
 <!-- FLECHAS -->
-<div class="arrow vertical a1"></div>
-<div class="arrow vertical a2"></div>
-<div class="arrow vertical a3"></div>
+<svg>
 
-<div class="arrow horizontal a4"></div>
-<div class="arrow horizontal a5"></div>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+<path d="M0,0 L0,6 L9,3 z" fill="#222"></path>
+</marker>
+</defs>
 
-<div class="arrow vertical a6"></div>
-<div class="arrow vertical a7"></div>
-<div class="arrow vertical a8"></div>
-<div class="arrow vertical a9"></div>
+<!-- FILA SUPERIOR -->
+<line class="line" x1="550" y1="120" x2="180" y2="180"/>
+<line class="line" x1="550" y1="120" x2="550" y2="180"/>
+<line class="line" x1="550" y1="120" x2="930" y2="180"/>
 
-<!-- CENTRO -->
+<!-- FILA MEDIA -->
+<line class="line" x1="550" y1="120" x2="180" y2="530"/>
+<line class="line" x1="550" y1="120" x2="550" y2="530"/>
+<line class="line" x1="550" y1="120" x2="930" y2="530"/>
 
-<div class="box central">
-RAZONAMIENTO INCORRECTO<br>
-Falacias y Paralogismos
-</div>
+<!-- FILA INFERIOR -->
+<line class="line" x1="550" y1="120" x2="180" y2="900"/>
+<line class="line" x1="550" y1="120" x2="550" y2="900"/>
+<line class="line" x1="550" y1="120" x2="930" y2="900"/>
 
-<!-- ARRIBA -->
+</svg>
 
-<div class="box purple b1">
+<!-- TARJETAS -->
+
+<div class="card purple c1">
 <h2>¿Qué son?</h2>
 <p>
-Errores en el razonamiento donde la conclusión no se deriva correctamente de las premisas.
+Son errores en el razonamiento donde la conclusión no se deriva correctamente de las premisas.
+Muy comunes en debates jurídicos y argumentaciones.
 </p>
 </div>
 
-<div class="box yellow b2">
-<h2>Razonamiento Natural</h2>
-<p>
-Es cotidiano y espontáneo.
-<br><br>
-Ejemplo:
-“Ese abogado habla duro, entonces tiene razón”.
-</p>
-</div>
-
-<div class="box pink b3">
-<h2>Razonamiento Lógico</h2>
-<p>
-Busca coherencia y rigor.
-Muy importante en el Derecho y las sentencias judiciales.
-</p>
-</div>
-
-<!-- MEDIO -->
-
-<div class="box blue b4">
+<div class="card yellow c2">
 <h2>Homonimia</h2>
 <p>
 Una palabra tiene varios significados.
 <br><br>
-“Derecho” puede significar:
-<br>
-• ley
-<br>
-• facultad
+Ejemplo:
+“Derecho” puede significar ley o facultad personal.
 </p>
 </div>
 
-<div class="box orange b5">
+<div class="card pink c3">
 <h2>Falsa Causa</h2>
 <p>
 Se atribuye una causa equivocada.
 <br><br>
-“Ganó Colombia porque me puse la camiseta”.
+Ejemplo:
+“Me puse la camiseta de Colombia y por eso ganó la selección”.
 </p>
 </div>
 
-<!-- ABAJO -->
-
-<div class="box green b6">
+<div class="card blue c4">
 <h2>Afirmar el Consecuente</h2>
 <p>
 Si llueve → la calle se moja.
@@ -267,35 +213,71 @@ La calle está mojada.
 <br>
 Entonces llovió.
 <br><br>
-❌ Puede existir otra causa.
+❌ Puede haber otra causa.
 </p>
 </div>
 
-<div class="box red b7">
+<div class="card orange c5">
+<h2>Negar el Antecedente</h2>
+<p>
+Si estudio → apruebo.
+<br>
+No estudié.
+<br>
+Entonces no aprobaré.
+<br><br>
+❌ Puede aprobar igualmente.
+</p>
+</div>
+
+<div class="card green c6">
 <h2>Petición de Principio</h2>
 <p>
-Se intenta probar algo usando la misma idea.
+Intentar demostrar algo usando la misma idea.
 <br><br>
 “El acusado es culpable porque cometió el delito”.
 </p>
 </div>
 
-<div class="box gray b8">
+<div class="card red c7">
+<h2>Argumento por Ignorancia</h2>
+<p>
+Se considera verdadero algo porque nadie ha probado lo contrario.
+<br><br>
+Ejemplo:
+“Los fantasmas existen porque nadie ha demostrado que no existen”.
+</p>
+</div>
+
+<div class="card gray c8">
 <h2>Falsa Generalización</h2>
 <p>
 Tomar pocos casos y aplicarlos a todos.
 <br><br>
-“Dos políticos robaron, entonces todos son corruptos”.
+Ejemplo:
+“Dos políticos fueron corruptos, entonces todos lo son”.
 </p>
 </div>
 
-<div class="box purple b9">
-<h2>Argumento por Ignorancia</h2>
+<div class="card purple c9">
+<h2>Idea Principal</h2>
 <p>
-Algo es verdadero porque nadie ha probado lo contrario.
+En Derecho no basta con hablar bonito.
 <br><br>
-“Los fantasmas existen porque nadie ha demostrado que no”.
+✔ Debe existir lógica
+<br>
+✔ coherencia
+<br>
+✔ pruebas
+<br>
+✔ motivación jurídica
 </p>
+</div>
+
+</div>
+
+<div class="footer">
+Florencio Mixán Mass – Razonamiento Incorrecto
 </div>
 
 </div>
