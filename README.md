@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TROGÜI - Tienda Online Colombia 🇨🇴</title>
+<title>TROGÜI - Tienda Colombia 🇨🇴</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -519,7 +519,236 @@ nav{background:var(--orange);position:sticky;top:70px;z-index:800}
   <button class="admin-btn c-btn" title="Ver Pedidos" onclick="adminAuth('c')">C</button>
   <button class="admin-btn e-btn" title="Editar Página" onclick="adminAuth('e')">E</button>
 </div>
+<!-- ADMIN R: PRODUCTS -->
+<div class="admin-overlay" id="admin-r">
+  <div class="admin-panel">
+    <h2>✏️ Editor Completo de Productos</h2>
 
+    <div class="visitors-badge">
+      <span class="visitors-dot"></span>
+      <span id="v1">0</span>
+      personas en la página ahora
+    </div>
+
+    <button class="btn-add-prod" onclick="addNewProduct()">
+      ➕ Agregar Producto
+    </button>
+
+    <div id="admin-product-list"></div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+      <button class="btn-save-admin" onclick="saveAllProducts()">
+        💾 Guardar Todos
+      </button>
+
+      <button onclick="closeAdmin('admin-r')"
+      style="background:#eee;border:none;padding:10px 20px;border-radius:10px;font-weight:700;cursor:pointer">
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+function renderAdminProducts(){
+
+ const container=document.getElementById("admin-product-list");
+
+ container.innerHTML="";
+
+ products.forEach((p,index)=>{
+
+  container.innerHTML+=`
+
+  <div class="admin-product-item">
+
+    <h3 style="margin-bottom:10px">
+      Producto #${index+1}
+    </h3>
+
+    <label>Nombre</label>
+    <input type="text"
+      value="${p.name||''}"
+      onchange="products[${index}].name=this.value">
+
+    <label>Precio Actual</label>
+    <input type="number"
+      value="${p.price||0}"
+      onchange="products[${index}].price=this.value">
+
+    <label>Precio Anterior</label>
+    <input type="number"
+      value="${p.oldPrice||0}"
+      onchange="products[${index}].oldPrice=this.value">
+
+    <label>Descripción</label>
+    <textarea
+      onchange="products[${index}].description=this.value">${p.description||''}</textarea>
+
+    <label>Stock</label>
+    <input type="number"
+      value="${p.stock||10}"
+      onchange="products[${index}].stock=this.value">
+
+    <hr style="margin:15px 0">
+
+    <h4>Imagen Principal</h4>
+
+    <input type="file"
+      accept="image/*"
+      onchange="uploadImage(event,${index})">
+
+    <br><br>
+
+    <input type="text"
+      placeholder="https://imagen.jpg"
+      onchange="products[${index}].image=this.value">
+
+    <br><br>
+
+    ${
+      p.image ?
+      `<img src="${p.image}"
+      style="width:120px;height:120px;object-fit:cover;border-radius:10px">`
+      :
+      ''
+    }
+
+    <hr style="margin:15px 0">
+
+    <h4>Video / GIF</h4>
+
+    <input type="file"
+      accept="video/*,image/gif"
+      onchange="uploadVideo(event,${index})">
+
+    <br><br>
+
+    <input type="text"
+      placeholder="https://video.mp4 o gif"
+      onchange="products[${index}].video=this.value">
+
+    <br><br>
+
+    ${
+      p.video ?
+      `
+      <video
+      src="${p.video}"
+      autoplay
+      muted
+      loop
+      playsinline
+      controls
+      style="width:220px;border-radius:10px">
+      </video>
+      `
+      :
+      ''
+    }
+
+    <hr style="margin:15px 0">
+
+    <button
+      class="btn-del-admin"
+      onclick="deleteProduct(${index})">
+      🗑 Eliminar Producto
+    </button>
+
+  </div>
+
+  `;
+ });
+
+}
+
+function uploadImage(event,index){
+
+ const file=event.target.files[0];
+
+ if(!file) return;
+
+ const reader=new FileReader();
+
+ reader.onload=function(e){
+
+  products[index].image=e.target.result;
+
+  renderAdminProducts();
+
+ };
+
+ reader.readAsDataURL(file);
+
+}
+
+function uploadVideo(event,index){
+
+ const file=event.target.files[0];
+
+ if(!file) return;
+
+ const reader=new FileReader();
+
+ reader.onload=function(e){
+
+  products[index].video=e.target.result;
+
+  renderAdminProducts();
+
+ };
+
+ reader.readAsDataURL(file);
+
+}
+
+function addNewProduct(){
+
+ products.push({
+
+   name:"Nuevo Producto",
+   price:0,
+   oldPrice:0,
+   description:"",
+   stock:10,
+   image:"",
+   video:""
+
+ });
+
+ renderAdminProducts();
+
+}
+
+function deleteProduct(index){
+
+ if(confirm("¿Eliminar este producto?")){
+
+   products.splice(index,1);
+
+   renderAdminProducts();
+
+ }
+
+}
+
+function saveAllProducts(){
+
+ localStorage.setItem(
+   "trogui_products",
+   JSON.stringify(products)
+ );
+
+ alert("Productos guardados correctamente");
+
+ if(typeof renderProducts==="function"){
+   renderProducts();
+ }
+
+}
+
+</script>
 <!-- ADMIN R: PRODUCTS -->
 <div class="admin-overlay" id="admin-r">
   <div class="admin-panel">
